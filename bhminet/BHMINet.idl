@@ -1,0 +1,58 @@
+// BHMINet.idl : IDL source for BHMINet.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (BHMINet.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(F3FE9222-ECD2-11D2-A7FE-0080C8763FA4),
+		dual,
+		helpstring("IBHMSMTP Interface"),
+		pointer_default(unique)
+	]
+	interface IBHMSMTP : IDispatch
+	{
+		//Standard Server Side Component Methods
+		HRESULT OnStartPage([in] IUnknown* piUnk);
+		HRESULT OnEndPage();	
+		[id(1), helpstring("Send out the mail")] HRESULT Send();
+		[propget, id(2), helpstring("property Rcpt")] HRESULT Rcpt([out, retval] BSTR *pVal);
+		[propput, id(2), helpstring("property Rcpt")] HRESULT Rcpt([in] BSTR newVal);
+		[propget, id(3), helpstring("property From")] HRESULT From([out, retval] BSTR *pVal);
+		[propput, id(3), helpstring("property From")] HRESULT From([in] BSTR newVal);
+		[propget, id(4), helpstring("property FromName")] HRESULT FromName([out, retval] BSTR *pVal);
+		[propput, id(4), helpstring("property FromName")] HRESULT FromName([in] BSTR newVal);
+		[propget, id(5), helpstring("property Subject")] HRESULT Subject([out, retval] BSTR *pVal);
+		[propput, id(5), helpstring("property Subject")] HRESULT Subject([in] BSTR newVal);
+		[propget, id(6), helpstring("property Message")] HRESULT Message([out, retval] BSTR *pVal);
+		[propput, id(6), helpstring("property Message")] HRESULT Message([in] BSTR newVal);
+		[propget, id(7), helpstring("property ContentType")] HRESULT ContentType([out, retval] BSTR *pVal);
+		[propput, id(7), helpstring("property ContentType")] HRESULT ContentType([in] BSTR newVal);
+		[propget, id(8), helpstring("property Server")] HRESULT Server([out, retval] BSTR *pVal);
+		[propput, id(8), helpstring("property Server")] HRESULT Server([in] BSTR newVal);
+		[propget, hidden, id(9), helpstring("property Attach")] HRESULT Attach([out, retval] BSTR *pVal);
+		[propput, hidden, id(9), helpstring("property Attach")] HRESULT Attach([in] BSTR newVal);
+	};
+
+[
+	uuid(F3FE9216-ECD2-11D2-A7FE-0080C8763FA4),
+	version(1.0),
+	helpstring("BHMINet 1.0 Type Library")
+]
+library BHMINETLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(F3FE9223-ECD2-11D2-A7FE-0080C8763FA4),
+		helpstring("BHMSMTP Class")
+	]
+	coclass BHMSMTP
+	{
+		[default] interface IBHMSMTP;
+	};
+};

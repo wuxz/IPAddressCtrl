@@ -1,0 +1,26 @@
+HKCR
+{
+	BHMINet.BHMSMTP.1 = s 'BHMSMTP Class'
+	{
+		CLSID = s '{F3FE9223-ECD2-11D2-A7FE-0080C8763FA4}'
+	}
+	BHMINet.BHMSMTP = s 'BHMSMTP Class'
+	{
+		CLSID = s '{F3FE9223-ECD2-11D2-A7FE-0080C8763FA4}'
+		CurVer = s 'BHMINet.BHMSMTP.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {F3FE9223-ECD2-11D2-A7FE-0080C8763FA4} = s 'BHMSMTP Class'
+		{
+			ProgID = s 'BHMINet.BHMSMTP.1'
+			VersionIndependentProgID = s 'BHMINet.BHMSMTP'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{F3FE9216-ECD2-11D2-A7FE-0080C8763FA4}'
+		}
+	}
+}
